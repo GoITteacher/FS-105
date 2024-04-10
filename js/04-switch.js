@@ -2,7 +2,27 @@
  * Оператор switch
  */
 
-const username = "Mango";
+/* const username = 'Vasya';
+
+switch (username) {
+  case '':
+    break;
+  case '':
+    break;
+  case '':
+    break;
+  case '':
+    break;
+  case '':
+    break;
+  case '':
+    break;
+  case '':
+    break;
+
+  default:
+    break;
+} */
 
 /**
  * Виконай рефакторинг коду задачі використовуючи switch.
@@ -13,16 +33,34 @@ const username = "Mango";
  * Якщо до дедлайну 3+ днів - виведи рядок "Date in the future"
  */
 
-const daysUntilDeadline = 5;
+/* 
 
 if (daysUntilDeadline === 0) {
-  console.log("Today");
+  console.log('Today');
 } else if (daysUntilDeadline === 1) {
-  console.log("Tomorrow");
+  console.log('Tomorrow');
 } else if (daysUntilDeadline === 2) {
-  console.log("Overmorrow");
+  console.log('Overmorrow');
 } else {
-  console.log("Date in the future");
+  console.log('Date in the future');
+}
+ */
+
+const daysUntilDeadline = 5;
+switch (daysUntilDeadline) {
+  case 0:
+    console.log('Today');
+    break;
+  case 1:
+    console.log('Tomorrow');
+    break;
+  case 2:
+    console.log('Overmorrow');
+    break;
+
+  default:
+    console.log('Date in the future');
+    break;
 }
 
 /*
@@ -36,7 +74,25 @@ if (daysUntilDeadline === 0) {
  * - 'Вам перезвонит менеджер'
  */
 
-const option = 1;
-let message = "";
+const option = 4;
+let message = '';
+
+switch (option) {
+  case 1:
+    message = 'Вы сможете забрать товар завтра с 12:00 в нашем офисе';
+    break;
+
+  case 2:
+    message = 'Курьер доставит заказ завтра с 9:00 до 18:00';
+    break;
+
+  case 3:
+    message = 'Посылка будет отправлена сегодня';
+    break;
+
+  default:
+    message = 'Вам перезвонит менеджер';
+    break;
+}
 
 console.log(message);
