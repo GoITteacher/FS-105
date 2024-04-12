@@ -3,8 +3,14 @@
  * числа за зростанням від a до b, але тільки якщо число кратне 5.
  */
 
-const a = 100;
-const b = 20;
+// const a = 100;
+// const b = 20;
+
+// for (let i = a; i >= b; i--) {
+//   if (i % 5 === 0) {
+//     console.log(i);
+//   }
+// }
 
 /*
  * Напиши скрипт, який підраховує суму всіх парних чисел,
@@ -12,6 +18,15 @@ const b = 20;
  * Наприклад, якщо min=0 и max=5, то діапазон 0-5, і в ньому два парних числа - 2 і 4, їх сума 6.
  */
 
-const min = 0;
-const max = 5;
-let total = 0;
+// const min = 10;
+// const max = 50;
+// let total = 0;
+
+// for (let i = min; i <= max; i++) {
+//   if (i % 4 === 0) {
+//     console.log(`total += `, i);
+//     total += i;
+//   }
+// }
+
+// console.log(total);
