@@ -7,19 +7,53 @@
  * - Різниця у використанні for и for...of
  */
 
-const friends = ["Mango", "Kiwi", "Poly", "Ajax"];
-console.table(friends);
+// for (let i = 0; i < 10; i++) {
+//   console.log('-', i);
+// }
+// =================================
 
-for (let i = 0; i < friends.length; i += 1) {
-  friends[i] += `-${i}`;
-}
+// debugger;
+// const friends = ['Mango', 'Kiwi', 'Poly', 'Ajax'];
+// for (let i = friends.length - 1; i >= 0; i += 2) {
+//   console.log(friends[i]);
+// }
 
-console.table(friends);
+// ==================================
+// const friends = ['Mango', 'Kiwi', 'Poly', 'Ajax'];
 
-for (let friend of friends) {
-  console.log(friend);
-  console.log(friends);
-}
+// for (let i = 0; i < friends.length; i += 1) {
+//   console.log(friends[i]);
+//   friends[i] = friends[i].toUpperCase();
+// }
+
+// console.table(friends);
+// ==================================
+
+const arr = [1, 2, 3, 4, 5, 6];
+
+// for (let i = 0; i < arr.length; i++) {
+//   arr[i] += 10;
+// }
+// for (let i = 0; i < arr.length; i += 2) {
+//   arr[i] *= -1;
+// }
+// console.log(arr);
+// ==================================
+
+// const salaries = [500, 600, 100, 500, 200, 700];
+// let total = 0;
+
+// for (const salary of salaries) {
+//   total += salary;
+// }
+
+// console.log(total);
+// ==================================
+
+// const friends = ['Mango', 'Kiwi', 'Poly', 'Ajax'];
+// for (const friend of friends) {
+//   console.log(friend);
+// }
 
 /**
  * Напиши скрипт для обчислення площі прямокутника зі сторонами,
@@ -27,7 +61,12 @@ for (let friend of friends) {
  * Значення гарантовано розділені пробілом.
  */
 
-const values = "8 11";
+// const values = '8 11';
+// const numbers = values.split(' ');
+// const width = +numbers[0];
+// const height = +numbers[1];
+// const area = width * height;
+// console.log(area);
 
 /**
  * Напиши скрипт для перебору масиву fruits.
@@ -36,4 +75,8 @@ const values = "8 11";
  * Нумерація елементів повинна починатися з 1.
  */
 
-const fruits = ["🍎", "🍇", "🍑", "🍌", "🍋"];
+// const fruits = ['🍎', '🍇', '🍑', '🍌', '🍋'];
+// for (let i = 0; i < fruits.length; i++) {
+//   const message = `${i + 1}) ${fruits[i]}`;
+//   console.log(message);
+// }
