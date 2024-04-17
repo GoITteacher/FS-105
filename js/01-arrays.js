@@ -9,15 +9,11 @@
  * - Перевизначення
  */
 
-const courses = ["HTML", "CSS", "JavaScript", "React", "PostgreSQL"];
+const courses = ['HTML', 'CSS', 'JavaScript', 'React', 'PostgreSQL'];
 console.table(courses);
-console.log([0]);
-console.log([1]);
-console.log([2]);
-console.log([3]);
 
-courses[1] = "Jacob";
-courses[3] = "Adrian";
+courses[1] = 'Jacob';
+courses[3] = 'Adrian';
 console.table(courses);
 
 console.log(courses.length);
