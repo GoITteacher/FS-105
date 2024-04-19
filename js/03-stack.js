@@ -3,26 +3,27 @@
  * - Порядок виконання
  */
 
-// function fnA() {
-//   console.log("fnA execution");
+// function foo1() {
+//   console.log('START1');
+//   foo2();
+//   console.log('END!');
 // }
 
-// function fnB() {
-//   console.log("fnB execution");
+// function foo2() {
+//   console.log('Start2');
+//   foo3();
+//   console.log('end2');
 // }
 
-// function fnC() {
-//   console.log("fnC execution");
+// function foo3() {
+//   console.log('Start2');
+//   console.log(test);
+//   console.log('end2');
 // }
 
-// console.log("Before fnA execution");
-// fnA();
-// console.log("After fnA execution");
+function foo(i = 0) {
+  console.log(i);
+  foo(i + 1);
+}
 
-// console.log("Before fnB execution");
-// fnB();
-// console.log("After fnB execution");
-
-// console.log("Before fnC execution");
-// fnC();
-// console.log("After fnC execution");
+foo();
