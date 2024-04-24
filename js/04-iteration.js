@@ -105,3 +105,67 @@
 // for (const item of arr) {
 //   console.log(item);
 // }
+
+// ===============================
+
+// const data = {
+//   message: {
+//     chatId: 1231,
+//     date: '12-2-2',
+//   },
+//   from: {
+//     chatId: 'awdawd',
+//   },
+// };
+
+// const values = Object.values(data);
+
+// ===============================
+
+// const obj = {
+//   x: 10,
+//   y: 20,
+//   t: 30,
+// };
+
+// const copy = Object.assign(obj);
+
+// console.log(copy);
+
+// ===============================
+
+// const obj = {
+//   x: 10,
+//   y: 20,
+//   t: 30,
+// };
+
+// Object.entries(obj)
+/* 
+[
+    ['x', 10],
+    ['y', 20],
+    ['t', 30],
+]
+*/
+
+// ===============================
+
+// function myFun(userObj) {
+//   //   const copy = Object.assign({}, userObj);
+//   const copy = { ...userObj };
+//   for (const key of Object.keys(copy)) {
+//     copy[key] += 1;
+//   }
+//   return copy;
+// }
+
+// const obj = {
+//   x: 10,
+//   y: 20,
+//   t: 30,
+// };
+
+// const result = myFun(obj);
+// console.log(result);
+// console.log(obj);
