@@ -11,16 +11,16 @@
  */
 
 const playlist = {
-  name: "My amazing playlist",
+  name: 'My amazing playlist',
   rating: 5,
-  tracks: ["track-1", "track-2", "track-3"],
+  tracks: ['track-1', 'track-2', 'track-3'],
   isFavourite: true,
 };
 
 /**
  * -----------------------------------
  */
-const propertyName = "tracks";
+const propertyName = 'tracks';
 
 /**
  * -----------------------------------

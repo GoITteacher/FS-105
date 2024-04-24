@@ -7,9 +7,9 @@
  */
 
 const user = {
-  name: "Mango",
+  name: 'Mango',
   age: 20,
-  hobby: "html",
+  hobby: 'html',
   premium: true,
 };
 
