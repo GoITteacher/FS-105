@@ -6,22 +6,70 @@
  * - Колекція значень властивості
  */
 
-const friends = [
-  { name: 'Mango', online: false },
-  { name: 'Kiwi', online: true },
-  { name: 'Poly', online: false },
-  { name: 'Ajax', online: false },
-];
+// const friends = [
+//   { name: 'Mango', online: false },
+//   { name: 'Kiwi', online: true },
+//   { name: 'Poly', online: false },
+//   { name: 'Ajax', online: false },
+// ];
 
+/* for (const friend of friends) {
+  console.log(`${friend.name} - ${friend.online}`);
+} */
+
+/* for (let i = 0; i < friends.length; i += 2) {
+  console.log(`${friends[i].name} - ${friends[i].online}`);
+} */
+
+/* for (const friend of friends) {
+  if (friend.online !== true) {
+    console.log(friend);
+  }
+} */
+
+/* for (const friend of friends) {
+  friend.online = !friend.online;
+} */
+
+// console.table(friends);
 // console.table(friends);
 
 /**
  * Пошук друга за іменем
  */
-// function findFriendByName(allFriends, friendName) {}
+const friends = [
+  { name: 'Mango', online: false, price: 100, amount: 50 },
+  { name: 'Kiwi', online: true, price: 50, amount: 150 },
+  { name: 'Poly', online: false, price: 20, amount: 200 },
+  { name: 'Ajax', online: false, price: 70, amount: 300 },
+  { name: 'Mango', online: false, price: 30, amount: 500 },
+];
 
-// console.log(findFriendByName(friends, "Poly"));
-// console.log(findFriendByName(friends, "Chelsy"));
+/* function findFriendByName(allFriends, friendName) {
+  for (const friend of allFriends) {
+    if (friend.name === friendName) {
+      return friend;
+    }
+  }
+  return null;
+} */
+
+/* function findFriendByPrice(arr, price, minAmount) {
+  const result = [];
+  for (const friend of arr) {
+    if (friend.price <= price && friend.amount > minAmount) {
+      result.push(friend);
+    }
+  }
+  return result;
+} */
+
+// console.log(findFriendByName(friends, 'Poly'));
+// console.log(findFriendByName(friends, 'Chelsy'));
+// console.log(findFriendByName(friends, 'Mango'));
+
+// const obj = findFriendByPrice(friends, 50, 50);
+// console.log(obj);
 
 /**
  * Отримуємо імена всіх лрузів
