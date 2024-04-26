@@ -60,6 +60,16 @@ const cars = [
     type: 'Sedan',
   },
   {
+    brand: 'Honda',
+    model: 'Accord',
+    year: 2020,
+    color: 'White',
+    price: 28000,
+    amount: 5,
+    isSportCar: false,
+    type: 'Sedan',
+  },
+  {
     brand: 'Audi',
     model: 'A4',
     year: 2021,
@@ -108,6 +118,16 @@ const cars = [
     amount: 6,
     isSportCar: false,
     type: 'Hatchback',
+  },
+  {
+    brand: 'Lamborghini',
+    model: 'Huracan',
+    year: 2023,
+    color: 'Yellow',
+    price: 300000,
+    amount: 1,
+    isSportCar: true,
+    type: 'Coupe',
   },
   {
     brand: 'Subaru',
@@ -499,3 +519,7 @@ const users = [
     gender: 'Female',
   },
 ];
+
+const str = 'Hello world';
+
+// ============================

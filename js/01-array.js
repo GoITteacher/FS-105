@@ -37,13 +37,13 @@
 /**
  * Пошук друга за іменем
  */
-const friends = [
-  { name: 'Mango', online: false, price: 100, amount: 50 },
-  { name: 'Kiwi', online: true, price: 50, amount: 150 },
-  { name: 'Poly', online: false, price: 20, amount: 200 },
-  { name: 'Ajax', online: false, price: 70, amount: 300 },
-  { name: 'Mango', online: false, price: 30, amount: 500 },
-];
+// const friends = [
+//   { name: 'Mango', online: false, price: 100, amount: 50 },
+//   { name: 'Kiwi', online: true, price: 50, amount: 150 },
+//   { name: 'Poly', online: false, price: 20, amount: 200 },
+//   { name: 'Ajax', online: false, price: 70, amount: 300 },
+//   { name: 'Mango', online: false, price: 30, amount: 500 },
+// ];
 
 /* function findFriendByName(allFriends, friendName) {
   for (const friend of allFriends) {
@@ -98,3 +98,64 @@ const friends = [
 //   { name: "Сапфір", price: 400, quantity: 7 },
 //   { name: "Щебінь", price: 200, quantity: 2 },
 // ];
+
+//! =========================================================
+
+// console.log(cars);
+
+/* 
+{
+    brand: 'Toyota',
+    model: 'Camry',
+    year: 2019,
+    color: 'Silver',
+    price: 25000,
+    amount: 3,
+    isSportCar: false,
+    type: 'Sedan',
+  }
+*/
+
+// console.log(cars);
+
+// function getModels(cars) {
+//   const result = [];
+
+//   for (const car of cars) {
+//     const str = `${car.brand} ${car.model}`;
+//     if (!result.includes(str)) {
+//       result.push(str);
+//     }
+//   }
+
+//   return result;
+// }
+
+// console.log(getModels(cars));
+
+/* 
+
+{
+    brand: 'Toyota',
+    model: 'M5',
+    year: 2019,
+    color: 'Silver',
+    price: 25000,
+    amount: 3,
+    isSportCar: false,
+    type: 'Sedan',
+  }
+  
+*/
+
+// function getMarkup(cars) {
+//   const result = [];
+
+//   for (const car of cars) {
+//     result.push(`<li>${car.brand}-${car.model}</li>`);
+//   }
+
+//   return result.join('\n');
+// }
+
+// console.log(getMarkup(cars));
