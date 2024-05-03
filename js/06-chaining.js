@@ -1,103 +1,246 @@
 /**
  * Ланцюжки методів
  */
-const numbers = [1, 5, 2, 4, 3];
+// const numbers = [1, 5, 2, 4, 3];
 
-const greaterThenTwo = numbers;
-console.log(greaterThenTwo);
+// const greaterThenTwo = numbers.filter(el => el > 2);
+// const multByThree = greaterThenTwo.map(el => el * 3);
+// const sorted = multByThree.toSorted((a, b) => a - b);
+// console.log(sorted);
 
-const multByThree = greaterThenTwo;
-console.log(multByThree);
+// const sortedByChaining = numbers
+//   .filter(el => el > 2)
+//   .map(el => el * 3)
+//   .toSorted((a, b) => a - b);
 
-const sorted = multByThree;
-console.log(sorted);
+// console.log(sortedByChaining);
+//!===============================================================
 
-const sortedbyChaining = numbers;
-console.log(sortedbyChaining);
+// const numbers = [1, 2, 3, 4, 4, 1, 1, 2, 3, 5, 5, 3, 234, 5, 2];
+
+// const result = numbers
+//   .filter(el => el % 2 === 0)
+//   .map((el, i, myArray) => {
+//     return el * myArray.length;
+//   });
+
+// console.log(result);
+
+//!===============================================================
 
 /**
  * -------------------------------------
  */
 const allCars = [
   {
-    make: "Honda",
-    model: "CR-V",
-    type: "suv",
-    amount: 14,
-    price: 24045,
-    onSale: true,
+    brand: 'Toyota',
+    model: 'Camry',
+    year: 2019,
+    color: 'Silver',
+    price: 25000,
+    amount: 3,
+    isSportCar: false,
+    type: 'Sedan',
   },
   {
-    make: "Honda",
-    model: "Accord",
-    type: "sedan",
+    brand: 'Honda',
+    model: 'Accord',
+    year: 2020,
+    color: 'White',
+    price: 28000,
+    amount: 5,
+    isSportCar: false,
+    type: 'Sedan',
+  },
+  {
+    brand: 'Ford',
+    model: 'Mustang',
+    year: 2021,
+    color: 'Red',
+    price: 50000,
     amount: 2,
-    price: 22455,
-    onSale: true,
+    isSportCar: true,
+    type: 'Coupe',
   },
   {
-    make: "Mazda",
-    model: "Mazda 6",
-    type: "sedan",
-    amount: 8,
-    price: 24195,
-    onSale: false,
+    brand: 'Chevrolet',
+    model: 'Camaro',
+    year: 2018,
+    color: 'Black',
+    price: 45000,
+    amount: 1,
+    isSportCar: true,
+    type: 'Coupe',
   },
   {
-    make: "Mazda",
-    model: "CX-9",
-    type: "suv",
-    amount: 7,
-    price: 31520,
-    onSale: true,
+    brand: 'BMW',
+    model: 'M5',
+    year: 2022,
+    color: 'Blue',
+    price: 70000,
+    amount: 2,
+    isSportCar: true,
+    type: 'Sedan',
   },
   {
-    make: "Toyota",
-    model: "4Runner",
-    type: "suv",
-    amount: 19,
-    price: 34210,
-    onSale: false,
+    brand: 'Mercedes-Benz',
+    model: 'E-Class',
+    year: 2020,
+    color: 'Silver',
+    price: 60000,
+    amount: 3,
+    isSportCar: false,
+    type: 'Sedan',
   },
   {
-    make: "Toyota",
-    model: "Sequoia",
-    type: "suv",
-    amount: 16,
-    price: 45560,
-    onSale: false,
-  },
-  {
-    make: "Toyota",
-    model: "Tacoma",
-    type: "truck",
+    brand: 'Audi',
+    model: 'A4',
+    year: 2021,
+    color: 'Gray',
+    price: 45000,
     amount: 4,
-    price: 24320,
-    onSale: true,
+    isSportCar: false,
+    type: 'Sedan',
   },
   {
-    make: "Ford",
-    model: "F-150",
-    type: "truck",
-    amount: 11,
-    price: 27110,
-    onSale: true,
+    brand: 'Lamborghini',
+    model: 'Huracan',
+    year: 2023,
+    color: 'Yellow',
+    price: 300000,
+    amount: 1,
+    isSportCar: true,
+    type: 'Coupe',
   },
   {
-    make: "Ford",
-    model: "Fusion",
-    type: "sedan",
-    amount: 13,
-    price: 22120,
-    onSale: true,
+    brand: 'Ferrari',
+    model: '488 GTB',
+    year: 2022,
+    color: 'Red',
+    price: 350000,
+    amount: 1,
+    isSportCar: true,
+    type: 'Coupe',
   },
   {
-    make: "Ford",
-    model: "Explorer",
-    type: "suv",
+    brand: 'Porsche',
+    model: '911',
+    year: 2021,
+    color: 'White',
+    price: 120000,
+    amount: 2,
+    isSportCar: true,
+    type: 'Coupe',
+  },
+  {
+    brand: 'Toyota',
+    model: 'Golf',
+    year: 2020,
+    color: 'Black',
+    price: 20000,
     amount: 6,
-    price: 31660,
-    onSale: false,
+    isSportCar: false,
+    type: 'Hatchback',
+  },
+  {
+    brand: 'Subaru',
+    model: 'Forester',
+    year: 2021,
+    color: 'Green',
+    price: 30000,
+    amount: 3,
+    isSportCar: false,
+    type: 'SUV',
+  },
+  {
+    brand: 'Jeep',
+    model: 'Wrangler',
+    year: 2022,
+    color: 'Orange',
+    price: 35000,
+    amount: 2,
+    isSportCar: false,
+    type: 'SUV',
+  },
+  {
+    brand: 'Mazda',
+    model: 'CX-5',
+    year: 2020,
+    color: 'Red',
+    price: 28000,
+    amount: 5,
+    isSportCar: false,
+    type: 'SUV',
+  },
+  {
+    brand: 'Kia',
+    model: 'Soul',
+    year: 2021,
+    color: 'Yellow',
+    price: 20000,
+    amount: 4,
+    isSportCar: false,
+    type: 'Hatchback',
+  },
+  {
+    brand: 'Toyota',
+    model: 'Tucson',
+    year: 2022,
+    color: 'White',
+    price: 30000,
+    amount: 3,
+    isSportCar: false,
+    type: 'SUV',
+  },
+  {
+    brand: 'Toyota',
+    model: 'Camry',
+    year: 2019,
+    color: 'Silver',
+    price: 25000,
+    amount: 3,
+    isSportCar: false,
+    type: 'Sedan',
+  },
+  {
+    brand: 'Nissan',
+    model: 'Sentra',
+    year: 2019,
+    color: 'Silver',
+    price: 22000,
+    amount: 3,
+    isSportCar: false,
+    type: 'Sedan',
+  },
+  {
+    brand: 'Volvo',
+    model: 'XC60',
+    year: 2020,
+    color: 'Blue',
+    price: 40000,
+    amount: 2,
+    isSportCar: false,
+    type: 'SUV',
+  },
+  {
+    brand: 'Lexus',
+    model: 'RX',
+    year: 2021,
+    color: 'Black',
+    price: 50000,
+    amount: 2,
+    isSportCar: false,
+    type: 'SUV',
+  },
+  {
+    brand: 'Land Rover',
+    model: 'Range Rover Evoque',
+    year: 2022,
+    color: 'Gray',
+    price: 60000,
+    amount: 1,
+    isSportCar: false,
+    type: 'SUV',
   },
 ];
 
@@ -105,7 +248,9 @@ const allCars = [
  * Нехай функція getAvailableCarNames повертає масив моделей автомобілів,
  * але тільки тих, які зараз на розпродажі.
  */
-const getModelsOnSale = (cars) => {};
+const getModelsOnSale = cars => {
+  return cars.filter(car => car.onSale).map(car => car.model);
+};
 
 // console.table(getModelsOnSale(allCars));
 
@@ -113,6 +258,40 @@ const getModelsOnSale = (cars) => {};
  * Нехай функція getSortedCarsOnSale повертає масив автомобілів
  * на розпродажі (Властивість onSale), відсортованих за зростанням ціни.
  */
-const getSortedCarsOnSale = (cars) => {};
+const getSortedCarsOnSale = cars => {
+  let count = 0;
+  const result = cars
 
-// console.table(getSortedCarsOnSale(allCars));
+    .toSorted((a, b) => {
+      count++;
+      return a.price - b.price;
+    })
+    .filter(car => {
+      count++;
+      return car.onSale;
+    });
+
+  return result;
+};
+getSortedCarsOnSale(allCars);
+// console.table();
+
+//!===============================================================
+
+// const arr = [
+//   [1, 4, 5, 1, 2, 3, 45, 5, 52, 1],
+//   [1, 4, 5, 1],
+//   [1, 4, 5, 1, 2, 3, 45, 5, 52, 1],
+//   [1, 4, 5, 1],
+//   [1, 4, 5, 1, 2, 3, 45, 5, 52, 1],
+//   [1, 4, 5, 1, 2, 3, 45, 5, 52, 1],
+//   [1, 4, 5, 1],
+// ];
+
+// const result = arr.filter(arr => arr.length > 7);
+
+// for (let i = 0; i < arr.length; i++) {
+//   arr[i] = arr[i].filter(el => el > 10);
+// }
+
+// console.log(arr);
