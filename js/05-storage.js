@@ -8,13 +8,33 @@
  * - addItem(item) - отримує новий товар і додає його до поточних.
  * - removeItem(item) - отримує товар і, якщо він є, видаляє його з поточних.
  */
-const storage = new Storage(["🍎", "🍋", "🍇", "🍑"]);
 
-const items = storage.getItems();
-console.table(items); // [ '🍎', '🍋', '🍇', '🍑' ]
+class Storage {
+  constructor(items) {
+    this.items = items;
+  }
 
-storage.addItem("🍌");
-console.table(storage.items); // [ '🍎', '🍋', '🍇', '🍑', '🍌' ]
+  getItems() {
+    return this.items;
+  }
 
-storage.removeItem("🍋");
-console.table(storage.items); // [ '🍎', '🍇', '🍑', '🍌' ]
+  addItem(item) {
+    this.items.push(item);
+  }
+
+  removeItem(item) {
+    this.items = this.items.filter(el => el !== item);
+  }
+}
+
+const storage = new Storage(['🍎', '🍋', '🍇', '🍑']);
+
+// const items = storage.getItems();
+//
+// console.table(items); // [ '🍎', '🍋', '🍇', '🍑' ]
+
+// storage.addItem('🍌');
+// console.table(storage.items); // [ '🍎', '🍋', '🍇', '🍑', '🍌' ]
+
+// storage.removeItem('🍋');
+// console.table(storage.items); // [ '🍎', '🍇', '🍑', '🍌' ]
