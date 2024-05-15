@@ -74,3 +74,17 @@ body {
 .deposit {
   background-color: rgba(157, 255, 157, 0.429);
 }
+
+.my-item {
+  background-color: #2a2a2a;
+  color: white;
+}
+
+.even {
+  background-color: #2a2a2a;
+  color: white;
+}
+.odd {
+  background-color: #aa6a6a;
+  color: white;
+}
