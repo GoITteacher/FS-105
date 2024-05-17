@@ -162,6 +162,50 @@ const cars = [
 ];
 
 const refs = {
-  form: document.querySelector('.js-form'),
-  container: document.querySelector('.js-list'),
+  formEl: document.querySelector('.js-form'),
+  containerEl: document.querySelector('.js-list'),
 };
+
+//!===============================================================
+
+refs.formEl.addEventListener('submit', e => {
+  e.preventDefault();
+
+  const formData = new FormData(refs.formEl);
+
+  const query = formData.get('query');
+  const type = formData.get('type');
+
+  const filtered = cars.filter(car => {
+    const isValidName = car.title.includes(query);
+    const isValidType = type === 'all' || car.type === type;
+    return isValidName && isValidType;
+  });
+
+  const markup = carsTemplate(filtered);
+  refs.containerEl.innerHTML = markup;
+});
+
+//!===============================================================
+function carTemplate(car) {
+  return `<li class="car-item">
+  <img
+    src="https://source.unsplash.com/1920x1280/?random=${car.id}&${car.title}"
+    alt=""
+  />
+  <div class="car-info">
+    <h3>${car.title}</h3>
+    <p>Type: ${car.type}</p>
+    <p>Price: ${car.price}</p>
+  </div>
+</li>`;
+}
+
+function carsTemplate(cars) {
+  return cars.map(carTemplate).join('\n');
+}
+
+const markup = carsTemplate(cars);
+refs.containerEl.innerHTML = markup;
+
+//!===============================================================

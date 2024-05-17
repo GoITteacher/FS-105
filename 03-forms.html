@@ -11,19 +11,12 @@
     <p><a href="index.html">Go back</a></p>
 
     <form class="js-form feedback-form">
-      <input
-        type="text"
-        name="email"
-        class="form-input"
-        placeholder="Email"
-        required
-      />
+      <input type="text" name="email" class="form-input" placeholder="Email" />
       <input
         type="password"
         name="password"
         class="form-input"
         placeholder="Password"
-        required
       />
       <textarea
         cols="30"
@@ -32,9 +25,22 @@
         class="form-textarea"
         placeholder="Comment"
       ></textarea>
+
+      <div>
+        <input type="radio" name="test" value="1" />
+        <input type="radio" name="test" value="2" />
+        <input type="radio" name="test" value="3" />
+      </div>
       <button class="form-button">Submit</button>
     </form>
+    <hr />
+    <form class="js-user-form">
+      <input type="text" name="username" />
+      <input type="text" name="message" />
+      <button type="submit">SendMessage</button>
+    </form>
 
+    <ul class="messages js-messages"></ul>
     <script src="./js/03-forms.js"></script>
   </body>
 </html>

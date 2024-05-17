@@ -68,3 +68,24 @@ input {
   display: flex;
   flex-direction: column;
 }
+
+.btn-box {
+  border: 1px solid red;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  position: absolute;
+}
+
+input {
+  /* outline: none; */
+}
+.valid {
+  border: 1px solid rgb(78, 200, 78);
+}
+.invalid {
+  border: 1px solid red;
+}
