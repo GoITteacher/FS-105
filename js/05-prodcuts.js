@@ -44,3 +44,65 @@ const products = [
 ];
 
 const container = document.querySelector('.products');
+
+//!===============================================================
+
+function productTemplate(product) {
+  return `<li class="item" data-id="${product.id}">
+  <img
+    src="${product.img}"
+    alt=""
+  />
+  <h3>${product.name}</h3>
+</li>`;
+}
+
+function productsTemplate(arr) {
+  return arr.map(productTemplate).join('');
+}
+
+const markup = productsTemplate(products);
+
+container.innerHTML = markup;
+
+//!===============================================================
+
+container.addEventListener('click', e => {
+  if (e.target === e.currentTarget) return;
+
+  const liElem = e.target.closest('li');
+  const id = liElem.dataset.id;
+  const product = products.find(el => el.id == id);
+
+  showModal(product);
+});
+
+function showModal(product) {
+  const markup = `<li class="item" data-id="${product.id}">
+  <img
+    src="${product.img}"
+    alt=""
+  />
+  <h3>${product.name}</h3>
+  <p>Price: ${product.price}</p>
+  <p>${product.description}</p>
+</li>`;
+
+  const instance = basicLightbox.create(markup, {
+    onShow: instance => {
+      window.addEventListener('keydown', onModalClose);
+    },
+    onClose: instance => {
+      window.removeEventListener('keydown', onModalClose);
+    },
+  });
+  instance.show();
+
+  function onModalClose(e) {
+    if (e.code === 'Escape') {
+      instance.close();
+    }
+  }
+}
+
+//!===============================================================
