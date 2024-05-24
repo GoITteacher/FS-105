@@ -120,12 +120,12 @@ const allCars = [
   }
 */
 
-// const filterByPrice = (cars, threshold) => {
-//   const result = cars.filter((car, i, arr) => {
-//     return car.price < threshold;
-//   });
-//   return result;
-// };
+const filterByPrice = (cars, threshold) => {
+  const result = cars.filter(({ price }, i, arr) => {
+    return price < threshold;
+  });
+  return result;
+};
 
 // const filterByPrice = (cars, threshold) => {
 //   return cars.filter(car => car.price < threshold);
