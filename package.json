@@ -23,6 +23,10 @@
     "vite": "^4.0.5"
   },
   "dependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "basiclightbox": "^5.0.4",
+    "simplelightbox": "^2.14.3",
+    "uuid": "^9.0.1",
     "vite-plugin-full-reload": "^1.0.5",
     "vite-plugin-html-inject": "^1.0.1"
   },
