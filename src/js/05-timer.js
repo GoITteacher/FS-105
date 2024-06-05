@@ -1,55 +1,76 @@
+import flatpickr from 'flatpickr';
+import 'flatpickr/dist/flatpickr.min.css';
+
 /**
  * Напишемо клас Timer, який буде
  * запускати та зупиняти відлік часу
  */
 
-class Timer {
-  constructor() {}
+const refs = {
+  startBtn: document.querySelector('[data-action-start]'),
+  stopBtn: document.querySelector('[data-action-stop]'),
+  clockface: document.querySelector('.js-clockface'),
+};
 
-  start() {}
+let intervalId;
+let initTime;
 
-  stop() {}
+refs.startBtn.addEventListener('click', () => {
+  intervalId = setInterval(() => {
+    const currentTime = Date.now();
+    const diff = initTime - currentTime;
+    const time = convertMs(diff);
+    const str = getTime(time);
 
-  /*
-   * - Приймає час в мілісекундах
-   * - Вираховує скільки в них вміщається годин/хвилин/секунд
-   * - Повертає об'єкт з властивостями hours, mins, secs
-   * - Адська копіпаста з stackoverflow 💩
-   */
-  getTimeComponents(time) {
-    const hours = this.pad(
-      Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-    );
-    const mins = this.pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
-    const secs = this.pad(Math.floor((time % (1000 * 60)) / 1000));
+    refs.clockface.textContent = str;
+  }, 1000);
 
-    return { hours, mins, secs };
-  }
+  setTimeout(() => {
+    clearInterval(intervalId);
+  }, initTime - Date.now() - 1000);
 
-  /*
-   * Приймає число, перетворює його в рядок і додає в початок 0, якщо число менше 2-х знаків
-   */
-  pad(value) {
-    return String(value).padStart(2, "0");
-  }
-}
-
-const startBtn = document.querySelector("button[data-action-start]");
-const stopBtn = document.querySelector("button[data-action-stop]");
-const clockface = document.querySelector(".js-clockface");
-
-const timer = new Timer({
-  onTick: updateClockface,
+  refs.startBtn.disabled = true;
+  refs.stopBtn.disabled = false;
 });
 
-// startBtn.addEventListener("click", timer.start.bind(timer));
-// stopBtn.addEventListener("click", timer.stop.bind(timer));
+refs.stopBtn.addEventListener('click', () => {
+  console.log('STOP');
+  clearInterval(intervalId);
+  refs.startBtn.disabled = false;
+  refs.stopBtn.disabled = true;
+});
 
-/*
- * - Приймає час в мілісекундах
- * - Вираховує скільки в них вміщається годин/хвилин/секунд
- * - Рисує інтерфейс
- */
-function updateClockface({ hours, mins, secs }) {
-  clockface.textContent = `${hours}:${mins}:${secs}`;
+//!===============================================================
+
+function convertMs(ms) {
+  let d, h, m, s;
+  s = Math.floor(ms / 1000);
+  m = Math.floor(s / 60);
+  s = s % 60;
+  h = Math.floor(m / 60);
+  m = m % 60;
+  d = Math.floor(h / 24);
+  h = h % 24;
+  return { d: d, h: h, m: m, s: s };
 }
+
+function getTime({ h, m, s }) {
+  h = h.toString().padStart(2, '0');
+  m = m.toString().padStart(2, '0');
+  s = s.toString().padStart(2, '0');
+
+  return `${h}:${m}:${s}`;
+}
+
+//!===============================================================
+
+flatpickr('.js-input', {
+  defaultDate: new Date(),
+  enableTime: true,
+  time_24hr: true,
+
+  onClose(selectedDates, dateStr, instance) {
+    const userDate = selectedDates[0];
+    initTime = userDate;
+  },
+});

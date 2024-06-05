@@ -23,6 +23,7 @@
     "vite": "^4.0.5"
   },
   "dependencies": {
+    "flatpickr": "^4.6.13",
     "vite-plugin-full-reload": "^1.0.5",
     "vite-plugin-html-inject": "^1.0.1"
   },

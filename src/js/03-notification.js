@@ -5,19 +5,52 @@
  * - Не забуваємо чистити таймер
  */
 
+//!===============================================================
+// const NOTIFICATION_DELAY = 3000;
+// let timeoutId = null;
+// const notification = document.querySelector('.js-alert');
+// setTimeout(() => {
+//   showNotification();
+//   timeoutId = setTimeout(hideNotification, 5000);
+// }, NOTIFICATION_DELAY);
+
+// notification.addEventListener('click', () => {
+//   hideNotification();
+//   console.log('clearTimeout');
+//   clearTimeout(timeoutId);
+// });
+
+//!===============================================================
 const NOTIFICATION_DELAY = 3000;
-let timeoutId = null;
-const notification = document.querySelector(".js-alert");
+let timeoutId;
+const notification = document.querySelector('.js-alert');
+let counter = 0;
 
-/*
- * Функції
- */
-function onNotificationClick() {}
+const intervalId = setInterval(() => {
+  counter++;
+  showNotification();
+  timeoutId = setTimeout(hideNotification, 2000);
 
+  if (counter >= 5) {
+    clearInterval(intervalId);
+  }
+}, 4000);
+
+notification.children[0].addEventListener('click', () => {
+  hideNotification();
+  clearTimeout(timeoutId);
+});
+
+notification.children[1].addEventListener('click', () => {
+  hideNotification();
+  clearInterval(intervalId);
+});
+
+//!===============================================================
 function showNotification() {
-  console.log(
-    "Закриваємо сповіщення автоматично, щоб воно не залишалося відкритим"
-  );
+  notification.classList.add('is-visible');
 }
 
-function hideNotification() {}
+function hideNotification() {
+  notification.classList.remove('is-visible');
+}
