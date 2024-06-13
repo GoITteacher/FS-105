@@ -3,33 +3,40 @@ const refs = {
   heroEl: document.querySelector('.js-hero-container'),
 };
 
+//!===============================================================
+
 refs.formEl.addEventListener('submit', e => {
   e.preventDefault();
 
-  const hero = e.target.elements.query.value;
+  const value = e.target.elements.query.value;
 
-  searchHero(hero).then(data => {
-    renderHero(data);
-  });
-
-  e.target.reset();
+  getSuperHero(value)
+    .then(data => {
+      const markup = heroTemplate(data);
+      refs.heroEl.insertAdjacentHTML('afterbegin', markup);
+    })
+    .catch(err => {});
 });
 
-function searchHero(userValue) {
+//!===============================================================
+function getSuperHero(superhero) {
   const BASE_URL = 'https://superhero-search.p.rapidapi.com';
   const END_POINT = '/api/';
-  const PARAMS = `?hero=${userValue}`;
-  const url = BASE_URL + END_POINT + PARAMS;
+  const params = new URLSearchParams({
+    hero: superhero,
+  });
 
-  const options = {
-    headers: {
-      'X-RapidAPI-Key': 'f6fe44fec7msh9f58de139869781p15408ajsn8e7b73b5d6b1',
-      'X-RapidAPI-Host': 'superhero-search.p.rapidapi.com',
-    },
+  const url = `${BASE_URL}${END_POINT}?${params}`;
+
+  const headers = {
+    'x-rapidapi-key': '9b3ff61931msh1b42d77d34e33dap1c29cajsn3d3169e0e2f4',
+    'x-rapidapi-host': 'superhero-search.p.rapidapi.com',
   };
 
-  return fetch(url, options).then(res => res.json());
+  return fetch(url, { headers }).then(res => res.json());
 }
+
+//!===============================================================
 
 function heroTemplate(hero) {
   const { appearance, biography, images, name, powerstats } = hero;
@@ -60,9 +67,4 @@ function heroTemplate(hero) {
     </div>
   </div>
 </div>`;
-}
-
-function renderHero(hero) {
-  const markup = heroTemplate(hero);
-  refs.heroEl.insertAdjacentHTML('afterbegin', markup);
 }

@@ -4,61 +4,45 @@ const refs = {
 };
 let userSymbol;
 
-// =================================
-
+//!===============================================================
 refs.formEl.addEventListener('submit', e => {
   e.preventDefault();
-  userSymbol = e.target.elements.query.value;
-
-  getPriceBySymbol(userSymbol)
+  const pair = e.target.elements.query.value;
+  getPrice(pair)
     .then(data => {
-      renderTicker(data);
+      const markup = priceTemplate(data);
+      refs.infoEl.innerHTML = markup;
     })
-    .catch(err => {
-      console.log(err);
-    });
-
-  e.target.reset();
+    .catch(err => {});
 });
 
-// =================================
-function getPriceBySymbol(userSymbol) {
+//!===============================================================
+
+function getPrice(userSymbol) {
   const BASE_URL = 'https://binance43.p.rapidapi.com';
   const END_POINT = '/ticker/price';
-  const PARAMS = `?symbol=${userSymbol}`;
+  const params = new URLSearchParams({
+    symbol: userSymbol,
+  });
+  const url = `${BASE_URL}${END_POINT}?${params}`;
 
-  const url = BASE_URL + END_POINT + PARAMS;
-
-  const options = {
-    headers: {
-      'X-RapidAPI-Key': 'f6fe44fec7msh9f58de139869781p15408ajsn8e7b73b5d6b1',
-      'X-RapidAPI-Host': 'binance43.p.rapidapi.com',
-    },
+  const headers = {
+    'x-rapidapi-key': '9b3ff61931msh1b42d77d34e33dap1c29cajsn3d3169e0e2f4',
+    'x-rapidapi-host': 'binance43.p.rapidapi.com',
   };
 
-  return fetch(url, options).then(res => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      throw new Error(res.status);
-    }
-  });
-}
-// =================================
-
-function symbolTemplate(obj) {
-  const icon = obj.symbol.toLowerCase().replace('usdt', '');
-  obj.price = Number(obj.price).toFixed(2);
-  return `
-  <img
-      class="coin-logo"
-      src="https://assets.coincap.io/assets/icons/${icon}@2x.png"
-    />
-  <span class="coin-title">${obj.symbol}</span>
-  <span class="coin-price">${obj.price}</span>`;
+  return fetch(url, { headers }).then(res => res.json());
 }
 
-function renderTicker(obj) {
-  const markup = symbolTemplate(obj);
-  refs.infoEl.innerHTML = markup;
+//!===============================================================
+
+function priceTemplate({ symbol, price }) {
+  const img = symbol.replace('USDT', '').toLowerCase();
+
+  return `<img
+  class="coin-logo"
+  src="https://assets.coincap.io/assets/icons/${img}@2x.png"
+/>
+<p class="coin-title">${symbol}</p>
+<p class="coin-price">${(+price).toFixed(2)}</p>`;
 }

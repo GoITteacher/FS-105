@@ -8,17 +8,40 @@ import './modules/user';
 
 // ====================================
 
-/* function getPostsByUser(userId) {
-  const BASE_URL = 'https://jsonplaceholder.typicode.com';
-  const END_POINT = '/posts';
-  const PARAMS = `?userId=${userId}`;
-  const url = BASE_URL + END_POINT + PARAMS;
+// function fetchUser(id) {
+//   const BASE_URL = 'https://jsonplaceholder.typicode.com';
+//   const END_POINT = '/users';
 
-  const options = {
-    headers: {
-      test_header: 'Volodka',
-    },
-  };
+//   const params = new URLSearchParams({
+//     id: id,
+//     test: 'Hello',
+//   });
 
-  return fetch(url, options).then(res => res.json());
-} */
+//   const url = `${BASE_URL}${END_POINT}?${params}`;
+
+//   return fetch(url).then(res => res.json());
+// }
+
+// fetchUser(1);
+
+//!===============================================================
+
+// function getPrice(userSymbol) {
+//   const BASE_URL = 'https://binance43.p.rapidapi.com';
+//   const END_POINT = '/ticker/price';
+//   const params = new URLSearchParams({
+//     symbol: userSymbol,
+//   });
+//   const url = `${BASE_URL}${END_POINT}?${params}`;
+
+//   const headers = {
+//     'x-rapidapi-key': '9b3ff61931msh1b42d77d34e33dap1c29cajsn3d3169e0e2f4',
+//     'x-rapidapi-host': 'binance43.p.rapidapi.com',
+//   };
+
+//   return fetch(url, { headers }).then(res => res.json());
+// }
+
+// getPrice('BTCUSDT').then(data => {
+//   console.log(data);
+// });
