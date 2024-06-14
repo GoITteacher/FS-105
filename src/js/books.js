@@ -13,6 +13,7 @@ const refs = {
   updateFormElem: document.querySelector('.js-update-form'),
   resetFormElem: document.querySelector('.js-reset-form'),
   bookListElem: document.querySelector('.js-article-list'),
+  loader: document.querySelector('.js-loader'),
 };
 
 //!===============================================================
@@ -34,10 +35,16 @@ function onBookCreate(e) {
     price: Math.round(Math.random() * 1000),
   };
 
-  createBook(book).then(createdBook => {
-    const markup = bookTemplate(createdBook);
-    refs.bookListElem.insertAdjacentHTML('afterbegin', markup);
-  });
+  showLoader();
+  createBook(book)
+    .then(createdBook => {
+      const markup = bookTemplate(createdBook);
+      refs.bookListElem.insertAdjacentHTML('afterbegin', markup);
+    })
+    .catch(() => {})
+    .finally(() => {
+      hideLoader();
+    });
   e.target.reset();
 }
 
@@ -104,10 +111,19 @@ function onBookDelete(e) {
 
 //!===============================================================
 
-getAllBooks().then(data => {
-  const markup = booksTemplate(data);
-  refs.bookListElem.innerHTML = markup;
-});
+function init() {
+  showLoader();
+  getAllBooks()
+    .then(data => {
+      const markup = booksTemplate(data);
+      refs.bookListElem.innerHTML = markup;
+    })
+    .finally(() => {
+      hideLoader();
+    });
+}
+
+init();
 
 //!===============================================================
 
@@ -137,3 +153,11 @@ function booksTemplate(books) {
 }
 
 //!===============================================================
+
+function showLoader() {
+  refs.loader.classList.remove('hidden');
+}
+
+function hideLoader() {
+  refs.loader.classList.add('hidden');
+}
