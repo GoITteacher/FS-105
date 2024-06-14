@@ -1,33 +1,6 @@
 {
   "books": [
     {
-      "title": "officiis exercitationem quis",
-      "author": "Florence Bartell",
-      "desc": "Soluta tenetur quibusdam enim explicabo accusamus. Sint dolorem delectus qui hic. Nesciunt consequatur aut molestiae necessitatibus nostrum in nostrum velit voluptas. Iure libero voluptatem. Eligendi eos eos aut cumque labore accusantium architecto.",
-      "rating": 736,
-      "price": 780,
-      "img": "https://source.unsplash.com/1280x720/?random=515&book",
-      "id": 1
-    },
-    {
-      "title": "ab corrupti officia",
-      "author": "Eva Beier",
-      "desc": "Eos harum voluptatem possimus perferendis earum eos similique et. Deserunt consequuntur et autem commodi iste aut sed omnis. Est deserunt facilis voluptas sit dignissimos.",
-      "rating": 705,
-      "price": 6,
-      "img": "https://source.unsplash.com/1280x720/?random=431&book",
-      "id": 2
-    },
-    {
-      "title": "sint architecto molestiae",
-      "author": "Mrs. Lynne Leuschke",
-      "desc": "Aliquam et et reprehenderit voluptatum ducimus omnis odit molestiae ea. Recusandae libero est et sequi qui optio qui optio. Dolores omnis necessitatibus est voluptatem sequi et voluptatem ratione non. Et perspiciatis iusto omnis ut sit harum non harum. Quaerat in mollitia. Et veniam aut.",
-      "rating": 709,
-      "price": 176,
-      "img": "https://source.unsplash.com/1280x720/?random=329&book",
-      "id": 3
-    },
-    {
       "title": "dolores qui consequuntur",
       "author": "Celia Schumm",
       "desc": "Natus error omnis voluptatem est quo delectus est dolor. Ab vel ipsum incidunt. Laboriosam laborum consequuntur impedit non. Libero est tenetur occaecati voluptas beatae.",
@@ -44,15 +17,6 @@
       "price": 130,
       "img": "https://source.unsplash.com/1280x720/?random=310&book",
       "id": 5
-    },
-    {
-      "title": "earum accusamus voluptatem",
-      "author": "Salvatore Buckridge",
-      "desc": "Excepturi in ut voluptas sapiente impedit enim voluptas odio. Accusantium nihil aut dolores ipsa maiores quia numquam quam. Quo ullam quae est ut enim architecto qui rerum non. Consequatur id officia est molestiae est soluta quod.",
-      "rating": 738,
-      "price": 921,
-      "img": "https://source.unsplash.com/1280x720/?random=330&book",
-      "id": 6
     },
     {
       "title": "nesciunt nulla quis",
@@ -424,31 +388,20 @@
       "id": 47
     },
     {
-      "title": "laudantium odio consequatur",
-      "author": "Seth Moen",
-      "desc": "Ipsam enim aliquid sed nemo tenetur qui quo numquam. Dolores corrupti soluta. Ut aut et quia. Officiis et optio et perferendis aut enim ullam corrupti maxime. Ipsum ut sint ut maxime ullam. Veritatis consequatur consectetur eaque cum temporibus et et accusamus quia.",
-      "rating": 517,
-      "price": 655,
-      "img": "https://source.unsplash.com/1280x720/?random=539&book",
+      "title": "awd",
+      "desc": "awd",
+      "author": "awd",
+      "rating": 7,
+      "price": 809,
       "id": 48
     },
     {
-      "title": "est aliquam reiciendis",
-      "author": "Monica Hessel",
-      "desc": "Sit necessitatibus sed consequuntur harum illo quaerat voluptas est totam. Officiis iste nisi. Harum sunt repudiandae earum similique suscipit qui corporis. Fuga illo cum omnis facere molestias qui ducimus soluta aspernatur.",
-      "rating": 911,
-      "price": 812,
-      "img": "https://source.unsplash.com/1280x720/?random=177&book",
+      "title": "awd",
+      "desc": "awdawd",
+      "author": "awdawd",
+      "rating": 9,
+      "price": 820,
       "id": 49
-    },
-    {
-      "title": "qui laborum molestias",
-      "author": "Velma Mayer III",
-      "desc": "Aut modi quia tenetur. Corporis id omnis. Officiis dicta commodi quasi doloremque sed. Deserunt in enim et consequatur eos aliquam. Voluptas dolorem quas id et qui.",
-      "rating": 85,
-      "price": 488,
-      "img": "https://source.unsplash.com/1280x720/?random=464&book",
-      "id": 50
     }
   ],
   "users": [
