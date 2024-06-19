@@ -1,64 +1,83 @@
-export class BooksAPI {
-  constructor() {
-    this.BASE_URL = 'http://localhost:3000';
-    this.END_POINT = '/books';
-    this.API_KEY = '123123';
-  }
+const BASE_URL = 'http://localhost:3000';
 
-  getBooks() {
-    const url = this.BASE_URL + this.END_POINT;
-    return fetch(url).then(res => res.json());
-  }
+export function getAllBooks() {
+  const END_POINT = '/books';
+  const url = `${BASE_URL}${END_POINT}`;
 
-  createBook(data) {
-    const url = this.BASE_URL + this.END_POINT;
+  const params = {};
+  const headers = {};
 
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    };
+  return fetch(url).then(res => res.json());
+}
 
-    return fetch(url, options).then(res => res.json());
-  }
+export function createBook(book) {
+  const END_POINT = '/books';
+  const url = BASE_URL + END_POINT;
 
-  updateBook(id, book) {
-    const url = `${this.BASE_URL}${this.END_POINT}/${id}`;
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
 
-    const options = {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(book),
-    };
+    body: JSON.stringify(book),
+  };
 
-    return fetch(url, options).then(res => res.json());
-  }
+  return fetch(url, options)
+    .then(res => res.json())
+    .catch(err => {
+      console.log(err);
+    });
+}
 
-  resetBook(id, book) {
-    const url = `${this.BASE_URL}${this.END_POINT}/${id}`;
+export function updateBook({ id, ...book }) {
+  console.log(book);
+  const END_POINT = '/books';
+  const url = `${BASE_URL}${END_POINT}/${id}`;
 
-    const options = {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(book),
-    };
+  const options = {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
 
-    return fetch(url, options).then(res => res.json());
-  }
+    body: JSON.stringify(book),
+  };
 
-  deleteBook(id) {
-    const url = `${this.BASE_URL}${this.END_POINT}/${id}`;
+  return fetch(url, options)
+    .then(res => res.json())
+    .catch(err => {
+      console.log(err);
+    });
+}
 
-    const options = {
-      method: 'DELETE',
-    };
+export function resetBook(id, book) {
+  const END_POINT = '/books';
+  const url = `${BASE_URL}${END_POINT}/${id}`;
 
-    return fetch(url, options).then(res => res.json());
-  }
+  const options = {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+
+    body: JSON.stringify(book),
+  };
+
+  return fetch(url, options)
+    .then(res => res.json())
+    .catch(err => {
+      console.log(err);
+    });
+}
+
+export function deleteBook(id) {
+  const END_POINT = '/books';
+  const url = `${BASE_URL}${END_POINT}/${id}`;
+
+  const options = {
+    method: 'DELETE',
+  };
+
+  return fetch(url, options);
 }
