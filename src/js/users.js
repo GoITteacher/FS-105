@@ -22,7 +22,7 @@ refs.updateUserForm.addEventListener('submit', onUpdateUser);
 refs.resetUserForm.addEventListener('submit', onResetUser);
 refs.deleteUserForm.addEventListener('submit', onDeleteUser);
 
-function onCreateUser(e) {
+async function onCreateUser(e) {
   e.preventDefault();
 
   const myData = {
@@ -32,10 +32,13 @@ function onCreateUser(e) {
     img: `https://source.unsplash.com/720x1280/?random=${Math.random()}&girl,portret,celebrity`,
   };
 
-  createUser(myData).then(newUser => {
+  try {
+    const newUser = await createUser(myData);
     const markup = userTemplate(newUser);
     refs.userListElem.insertAdjacentHTML('afterbegin', markup);
-  });
+  } catch (err) {
+    console.log(err);
+  }
 
   e.target.reset();
 }
