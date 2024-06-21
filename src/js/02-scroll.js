@@ -1,82 +1,79 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
-import { fetchArticles } from './modules/newsAPI2.js';
+import { getArticles } from './modules/newsAPI2.js';
 import { articlesTemplate } from './templates/render-function2.js';
+//!======================================================
 
 const refs = {
   formElem: document.querySelector('.js-search-form'),
   articleListElem: document.querySelector('.js-article-list'),
-  targetElem: document.querySelector('.js-target'),
   loadElem: document.querySelector('.js-loader'),
+  target: document.querySelector('.js-target'),
 };
 
-// ======================================
-let query;
-let page;
-let maxPage;
+let query = '';
+let currentPage = 1;
+let maxPage = 1;
 
-refs.formElem.addEventListener('submit', onFormSubmit);
+//!======================================================
 
-// ======================================
-
-async function onFormSubmit(e) {
+refs.formElem.addEventListener('submit', async e => {
   e.preventDefault();
+
   query = e.target.elements.query.value.trim();
-  page = 1;
-
-  if (!query) {
-    showError('Empty field');
-    return;
-  }
-
+  currentPage = 1;
   showLoader();
-
   try {
-    const data = await fetchArticles(query, page);
-    if (data.totalResults === 0) {
-      showError('Sorry!');
-    }
+    const data = await getArticles(query, currentPage);
+    const markup = articlesTemplate(data.articles);
+    refs.articleListElem.innerHTML = markup;
     maxPage = data.total_pages;
-    refs.articleListElem.innerHTML = '';
-    renderArticles(data.articles);
-  } catch (err) {
-    showError(err);
+  } catch {
+    console.log('Error');
   }
-
   hideLoader();
-  checkObserverStatus();
-  e.target.reset();
-}
+  updateStatusObserver();
+});
 
-async function onLoadMore() {
-  page += 1;
+async function loadMore() {
   showLoader();
-  const data = await fetchArticles(query, page);
-  renderArticles(data.articles);
+  try {
+    currentPage++;
+    const data = await getArticles(query, currentPage);
+    const markup = articlesTemplate(data.articles);
+    refs.articleListElem.insertAdjacentHTML('beforeend', markup);
+  } catch {
+    console.log('Error');
+  }
   hideLoader();
-  checkObserverStatus();
-
-  scrollBy({
-    behavior: 'smooth',
-    top: 1000,
-  });
+  updateStatusObserver();
 }
 
-// ======================================
-function renderArticles(articles) {
-  const markup = articlesTemplate(articles);
-  refs.articleListElem.insertAdjacentHTML('beforeend', markup);
+//!======================================================
+
+function onIntersection(entries) {
+  const entry = entries[0];
+  if (entry.isIntersecting) {
+    loadMore();
+  }
 }
 
-function observeTarget() {
-  console.log('observe');
-  observer.observe(refs.targetElem);
+const observer = new IntersectionObserver(onIntersection, {
+  rootMargin: '2500px',
+});
+
+function updateStatusObserver() {
+  if (currentPage >= maxPage) {
+    observer.unobserve(refs.target);
+    console.log('remove');
+  } else {
+    observer.observe(refs.target);
+    console.log('add');
+  }
 }
-function unobserveTarget() {
-  console.log('unobserve');
-  observer.unobserve(refs.targetElem);
-}
+
+//!======================================================
 
 function showLoader() {
   refs.loadElem.classList.remove('hidden');
@@ -84,36 +81,3 @@ function showLoader() {
 function hideLoader() {
   refs.loadElem.classList.add('hidden');
 }
-
-function showError(msg) {
-  iziToast.error({
-    title: 'Error',
-    message: msg,
-  });
-}
-
-function checkObserverStatus() {
-  if (page >= maxPage) {
-    unobserveTarget();
-    showError('Sorry! The End!');
-  } else {
-    observeTarget();
-  }
-}
-// ========================================
-
-const options = {
-  root: document.querySelector('#scrollArea'),
-  rootMargin: '0px',
-  threshold: 1.0,
-};
-
-const callback = function (entries, observer) {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      onLoadMore();
-    }
-  });
-};
-
-const observer = new IntersectionObserver(callback, options);

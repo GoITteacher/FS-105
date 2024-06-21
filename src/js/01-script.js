@@ -1,8 +1,8 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
-
-import { fetchArticles } from './modules/newsAPI.js';
+import { getArticles } from './modules/newsAPI.js';
 import { articlesTemplate } from './templates/render-functions.js';
+//!======================================================
 
 const refs = {
   formElem: document.querySelector('.js-search-form'),
@@ -11,67 +11,81 @@ const refs = {
   loadElem: document.querySelector('.js-loader'),
 };
 
-// ======================================
-let query;
-let page;
-let maxPage;
+let query = '';
+let currentPage = 1;
+let maxPage = 1;
+const perPage = 10;
 
-refs.formElem.addEventListener('submit', onFormSubmit);
-refs.btnLoadMore.addEventListener('click', onLoadMoreClick);
+//!======================================================
 
-// ======================================
-
-async function onFormSubmit(e) {
+refs.formElem.addEventListener('submit', async e => {
   e.preventDefault();
+
   query = e.target.elements.query.value.trim();
-  page = 1;
 
   if (!query) {
-    showError('Empty field');
+    showError('Error query');
     return;
   }
 
+  currentPage = 1;
   showLoader();
+  hideLoadBtn();
 
   try {
-    const data = await fetchArticles(query, page);
-    if (data.totalResults === 0) {
-      showError('Sorry!');
+    const data = await getArticles(query, currentPage);
+    maxPage = Math.ceil(data.totalResults / perPage);
+
+    if (maxPage === 0) {
+      showError('Empty Result');
+      hideLoader();
+      updateBtnStatus();
+      return;
     }
-    maxPage = Math.ceil(data.totalResults / 15);
-    refs.articleListElem.innerHTML = '';
-    renderArticles(data.articles);
+
+    const markup = articlesTemplate(data.articles);
+    refs.articleListElem.innerHTML = markup;
   } catch (err) {
-    console.log(err);
     showError(err);
   }
 
   hideLoader();
-  checkBtnVisibleStatus();
-  e.target.reset();
-}
+  updateBtnStatus();
+});
 
-async function onLoadMoreClick() {
-  page += 1;
+refs.btnLoadMore.addEventListener('click', async () => {
+  currentPage++;
+  hideLoadBtn();
   showLoader();
-  const data = await fetchArticles(query, page);
-  renderArticles(data.articles);
+
+  try {
+    const data = await getArticles(query, currentPage);
+    const markup = articlesTemplate(data.articles);
+    refs.articleListElem.insertAdjacentHTML('beforeend', markup);
+    skipOldElement();
+  } catch {
+    console.log('error');
+  }
+
   hideLoader();
-  checkBtnVisibleStatus();
+  updateBtnStatus();
+});
 
-  const height =
-    refs.articleListElem.firstElementChild.getBoundingClientRect().height;
+//!======================================================
 
-  scrollBy({
-    behavior: 'smooth',
-    top: 10,
-  });
-}
+function updateBtnStatus() {
+  if (currentPage >= maxPage) {
+    hideLoadBtn();
 
-// ======================================
-function renderArticles(articles) {
-  const markup = articlesTemplate(articles);
-  refs.articleListElem.insertAdjacentHTML('beforeend', markup);
+    if (maxPage) {
+      iziToast.info({
+        title: 'The End!',
+        message: 'End of collection!',
+      });
+    }
+  } else {
+    showLoadBtn();
+  }
 }
 
 function showLoadBtn() {
@@ -88,18 +102,19 @@ function hideLoader() {
   refs.loadElem.classList.add('hidden');
 }
 
-function showError(msg) {
+function showError(message) {
   iziToast.error({
     title: 'Error',
-    message: msg,
+    message,
   });
 }
 
-function checkBtnVisibleStatus() {
-  if (page >= maxPage) {
-    hideLoadBtn();
-  } else {
-    showLoadBtn();
-  }
+function skipOldElement() {
+  const liElem = refs.articleListElem.children[0];
+  const height = liElem.getBoundingClientRect().height;
+
+  scrollBy({
+    top: height * 3,
+    behavior: 'smooth',
+  });
 }
-// ========================================

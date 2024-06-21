@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-export async function fetchArticles(query, currentPage) {
-  const API_KEY = 'c8747511a2c34730a83caaff4f3693e7';
+export async function getArticles(query, currentPage) {
   const BASE_URL = 'https://free-news.p.rapidapi.com/v1';
   const END_POINT = '/search';
   const url = `${BASE_URL}${END_POINT}`;
